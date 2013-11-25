@@ -25,7 +25,7 @@ def printFile(fileName):
 
 
 PROBLEM_LINE=r'\s*^(\\problem{)(.*)(\s*})(.*)'     # TODO: Take only the first } encoutered 
-SOLUTION_LINE=r'\s*^\\solution'
+SOLUTION_LINE=r'\s*^\\solution(.*)'
 
 class Problems: 
     def __init__(self):
@@ -34,6 +34,10 @@ class Problems:
        self.cmds=[]
        self.ids=[]
        self.tags=[]
+       self.fmt_problem_begin = "\\problem{%s} "
+       self.fmt_problem_end = ""
+       self.fmt_solution_begin = "\\solution "
+       self.fmt_solution_end = ""
 
     def processCommands(self, keyList):
         for k in keyList:
@@ -87,7 +91,7 @@ class Problems:
 
             match = re.search(SOLUTION_LINE, line, re.UNICODE)
             if match != None: 
-                probSolution = line
+                probSolution = match.group(1)       # line
                 continue
 
             if len(probSolution) == 0:
@@ -119,22 +123,29 @@ class Problems:
                 random_key = rng.choice(self.problems.keys())
                 while len( self.problems[random_key][1])>0:
                     random_key = rng.choice(self.problems.keys())
-                print "\\paragraph{%s} " % (random_key)
+                print self.fmt_problem_begin % (random_key)
                 print self.problems[random_key][0]
+                print self.fmt_problem_end
+                print self.fmt_solution_begin
                 print self.problems[random_key][1]
+                print self.fmt_solution_end
             if cmd=="p" or cmd=="s":
 #                key=key.lower()
                 if not key in self.problems.keys():
-                    print "\\paragraph{%s NOT FOUND!!}\n" % (key)
+                    print self.fmt_problem_begin % ( key+" NOT FOUND!!"  )
                     sys.stderr.write("%% ERROR: Problem not found: %s\n" % (key))
                     continue
                 if cmd=="p":
-                    print "\\paragraph{%s} " % (key)
+                    print self.fmt_problem_begin % (key)
                     print self.problems[key][0]
+                    print self.fmt_problem_end
                 if cmd=="s":
-                    print "\\paragraph{%s} " % (key)
+                    print self.fmt_problem_begin % (key)
                     print self.problems[key][0]
+                    print self.fmt_problem_end
+                    print self.fmt_solution_begin
                     print self.problems[key][1]
+                print self.fmt_solution_end
             if cmd=="info":
                 self.printSummary()
 
