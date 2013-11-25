@@ -1,5 +1,23 @@
 #!/usr/bin/env python2
 
+# Problem extractor
+#
+# copyright (C) 2011-2013 Julian Wergieluk  <julian@wergieluk.com>
+# License: GPL
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 def printUsage():
     print "Problem extractor (c) Julian Wergieluk 2012-2013."
     print "usage: %s [key file] [problem file 1] [.. [problem file n]] " % sys.argv[0]
@@ -91,7 +109,10 @@ class Problems:
 
             match = re.search(SOLUTION_LINE, line, re.UNICODE)
             if match != None: 
-                probSolution = match.group(1)       # line
+                if len(match.group(1))>0:
+                    probSolution = match.group(1)       # line
+                else:
+                    probSolution = "\n"
                 continue
 
             if len(probSolution) == 0:
@@ -110,6 +131,14 @@ class Problems:
         for i in range(len(self.cmds)):
             cmd=self.cmds[i]
             key=self.keys[i]
+            if cmd=="fpb":
+                self.fmt_problem_begin = key
+            if cmd=="fpe":
+                self.fmt_problem_end = key
+            if cmd=="fsb":
+                self.fmt_solution_begin = key
+            if cmd=="fse":
+                self.fmt_solution_end = key
             if cmd=="sse":
                 print "\\section*{%s}" % (key)
             if cmd=="sss":
@@ -145,7 +174,7 @@ class Problems:
                     print self.fmt_problem_end
                     print self.fmt_solution_begin
                     print self.problems[key][1]
-                print self.fmt_solution_end
+                    print self.fmt_solution_end
             if cmd=="info":
                 self.printSummary()
 
@@ -171,13 +200,4 @@ if __name__ == "__main__":
         db.processTex(f)
         
     db.printProblems()
-
-
-
-
-
-
-
-
-
 
