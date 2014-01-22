@@ -1,10 +1,4 @@
-Problem extractor
-=================
-Julian Wergieluk
+Problem extractor. (c) 2012-2014. Julian Wergieluk
 
-
-
-Documentation for the thing
-
-
+A simple Python script for generating exercise sheets.
 
