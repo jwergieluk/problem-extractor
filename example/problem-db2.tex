@@ -1,0 +1,41 @@
+
+\section{Brownian Motion}
+
+\problem{Brownian Motion. Finite-dimensional distributions.} 
+Let $0=s_0 < s_1 < \cdots < s_n$ be positive real numbers and $(B_{s_{1}},\dots ,B_{s_n})$ 
+be a $n$-dimensional random vector with density given by
+\begin{equation*}
+    f(y_1,\dots ,y_n) = p(s_1, y_1, 0)p(s_2-s_1,y_2, y_1)\dots p(s_n-s_{n-1}, y_n, y_{n-1})
+\end{equation*}
+with 
+\begin{equation*}
+    p(t, x,y ) = \frac{1}{\sqrt{2\pi t}} \exp(-\frac{(x-y)^2}{2t}). 
+\end{equation*}
+Show that:
+\begin{enumerate}
+    \item The random variables $(B_{s_1}, B_{s_2}-B_{s_1},\dots ,B_{s_n}-B_{s_{n-1}})$ 
+        are independent.
+    \item The distribution of $B_{s_i}-B_{s_{i-1}}$ is $\cN(0, s_{i}-s_{i-1})$.
+\end{enumerate}
+
+\solution Use Jacobi's transformation formula with
+$g:\bR^{n}\to\bR^{n}, (y_1,\dots ,y_n)\mapsto(y_1, y_2-y_1,\dots
+,y_n-y_{n-1})$. 
+
+\problem{Maximum processes of the Brownian Motion. } Show that the process $W
+- W^*$ has independent increments. $W$ denotes Brownian Motion and $X^*_t=
+\max_{0 \leq s \leq t} X_s$ is the maximum process of a c\`adl\`ag process $X$.
+
+\problem{Independence and transformations. } Let random variables
+$X_1,\ldots,X_n$ and $Y_1,\ldots,Y_k$ satisfy $X_i \upmodels Y_j$ for all $i$
+and $i$.
+\begin{enumerate}
+    \item It follows that $g(X_i)$ and $h(Y_j)$ are independent for any $i$ and
+        $j$.
+    \item A generalization of the above result is not true. Given any Borel
+        functions $f$ and $g$ of suitable dimensionality $f(X_1,\ldots,X_n)$
+        may be not independent of $g(Y_1,\ldots,Y_k)$.
+\end{enumerate}
+
+
+

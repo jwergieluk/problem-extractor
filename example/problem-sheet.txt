@@ -1,0 +1,29 @@
+# Example problem sheet. Julian Wergieluk. 2013.
+
+INPUT preamble.tex
+
+TEX \begin{center}
+TEX     {\Large\bfseries Example problem sheet. \\}
+TEX     \vskip \baselineskip
+TEX {\itshape Julian Wergieluk}
+TEX \end{center}
+#TEX \vskip 2\baselineskip
+
+
+# Print problems
+P Maximum processes of the Brownian Motion.
+P Independent increments and filtrations.
+
+# Print problems and solutions
+S Brownian Motion. Finite-dimensional distributions.
+S Independent increments and filtrations.
+
+P Misspelled problem name.
+
+# Print random problem
+RANDOM
+
+TEX \end{document}
+
+# Print database info as tex-comment
+INFO

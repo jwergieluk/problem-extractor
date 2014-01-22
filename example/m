@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e; set -u
+
+PROBLEMS="problem-db1.tex problem-db2.tex"
+TMP="/tmp"
+PE="../pe.py"
+
+for KEYS in *.txt; do
+    TEX=${KEYS/.txt/.tex}
+    PDF=${KEYS/.txt/.pdf}
+
+    if [[ $KEYS -nt $PDF  ]]; then
+        $PE $KEYS $PROBLEMS > $TMP/$TEX
+        pdflatex -interaction=nonstopmode -output-directory  $TMP $TMP/$TEX
+        pdflatex -interaction=nonstopmode -output-directory  $TMP $TMP/$TEX
+        cp $TMP/${KEYS/.txt/.pdf} `pwd`
+    fi
+done
+
