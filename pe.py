@@ -132,13 +132,13 @@ class Problems:
             cmd=self.cmds[i]
             key=self.keys[i]
             if cmd=="fpb":
-                self.fmt_problem_begin = key
+                self.fmt_problem_begin = key.strip()
             if cmd=="fpe":
-                self.fmt_problem_end = key
+                self.fmt_problem_end = key.strip()
             if cmd=="fsb":
-                self.fmt_solution_begin = key
+                self.fmt_solution_begin = key.strip()
             if cmd=="fse":
-                self.fmt_solution_end = key
+                self.fmt_solution_end = key.strip()
             if cmd=="sse":
                 print "\\section*{%s}" % (key)
             if cmd=="sss":
@@ -165,11 +165,11 @@ class Problems:
                     sys.stderr.write("%% ERROR: Problem not found: %s\n" % (key))
                     continue
                 if cmd=="p":
-                    print self.fmt_problem_begin % (key)
+                    sys.stdout.write( self.fmt_problem_begin % (key) )      # does not print \n at the end of line
                     print self.problems[key][0]
                     print self.fmt_problem_end
                 if cmd=="s":
-                    print self.fmt_problem_begin % (key)
+                    sys.stdout.write( self.fmt_problem_begin % (key) )
                     print self.problems[key][0]
                     print self.fmt_problem_end
                     print self.fmt_solution_begin
