@@ -162,6 +162,7 @@ class Problems:
 #                key=key.lower()
                 if not key in self.problems.keys():
                     print self.fmt_problem_begin % ( key+" NOT FOUND!!"  )
+                    print self.fmt_problem_end
                     sys.stderr.write("%% ERROR: Problem not found: %s\n" % (key))
                     continue
                 if cmd=="p":
