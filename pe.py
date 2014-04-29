@@ -80,7 +80,7 @@ class Problems:
         probImported=0
 
         for line in lines: 
-            line=line.strip()
+            line=line.rstrip()
 
             if re.search(r'\\chapter', line, re.UNICODE)!=None:
                 continue
@@ -118,7 +118,7 @@ class Problems:
             if len(probSolution) == 0:
                 probBody = '\n'.join([probBody, line])
             else:
-                probSolution = '\n'.join([probSolution, line])
+                probSolution = '\n'.join([probSolution, line]).strip()
 
         if probName!="":
             if probName in self.problems.keys():
