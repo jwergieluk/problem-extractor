@@ -2,7 +2,7 @@
 
 # Problem extractor
 #
-# copyright (C) 2011-2013 Julian Wergieluk  <julian@wergieluk.com>
+# copyright (C) 2011-2014 Julian Wergieluk  <julian@wergieluk.com>
 # License: GPL
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -19,11 +19,11 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 def printUsage():
-    print "Problem extractor (c) Julian Wergieluk 2012-2013."
+    print "Problem extractor (c) Julian Wergieluk 2012-2014."
     print "usage: %s [key file] [problem file 1] [.. [problem file n]] " % sys.argv[0]
 
 
-import math, sys, os, calendar, re, numpy
+import sys, os, re
 from collections import OrderedDict
 
 def readLines(fileName):
