@@ -118,7 +118,7 @@ class Problems:
             if len(probSolution) == 0:
                 probBody = '\n'.join([probBody, line])
             else:
-                probSolution = '\n'.join([probSolution, line]).strip()
+                probSolution = '\n'.join([probSolution, line])
 
         if probName!="":
             if probName in self.problems.keys():
